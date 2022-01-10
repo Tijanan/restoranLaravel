@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\KuvarSeeder;
+use Database\Seeders\RestoranSeeder;
+use Database\Seeders\MenadzerSeeder;
+
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +18,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $kuvarSeeder = new KuvarSeeder();
+        $kuvarSeeder->run();
+
+        $restoranSeeder = new RestoranSeeder();
+        $restoranSeeder->run();
+
+        $menadzerSeeder = new MenadzerSeeder();
+        $menadzerSeeder->run();
     }
 }
