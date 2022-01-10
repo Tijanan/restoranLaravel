@@ -11,6 +11,13 @@ class Menadzer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ime',
+        'prezime',
+        'strucna_sprema',
+        'rest_id'
+    ];
+
     public function restoran()
     {
         return $this->belongsTo(Restoran::class);

@@ -10,6 +10,13 @@ class Restoran extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'naziv',
+        'adresa',
+        'grad',
+        'kapacitet'
+    ];
+
     public function menadzeri()
     {
         return $this->hasMany(Menadzer::class);
