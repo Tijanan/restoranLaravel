@@ -18,7 +18,7 @@ class CreateMenadzersTable extends Migration
             $table->string('ime');
             $table->string('prezime');
             $table->integer('plata');
-            $table->foreignId('rest_id')->constrained('restorans');
+            $table->foreignId('restoran_id')->constrained('restorans');
             $table->timestamps();
         });
     }

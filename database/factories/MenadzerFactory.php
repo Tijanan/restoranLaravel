@@ -18,7 +18,7 @@ class MenadzerFactory extends Factory
             'ime' => $this->faker->firstName(),
             'prezime' => $this->faker->lastName(),
             'strucna_sprema' => $this->faker->randomElement($array = array('III', 'IV', 'V', 'VI', 'VII')),
-            'rest_id' => Restoran::factory()
+            'restoran_id' => Restoran::factory()
         ];
     }
 }
