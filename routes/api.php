@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\MenadzerController;
 use App\Http\Controllers\API\RestoranController;
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,15 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
 Route::get('restoran', [RestoranController::class, 'index']);
 Route::get('restoran/{restoran}', [RestoranController::class, 'show']);
-Route::put('restoran/{restoran}', [RestoranController::class, 'update']);
-Route::delete('restoran/{restoran}', [RestoranController::class, 'destroy']);
-
 Route::get('menadzer', [MenadzerController::class, 'index']);
-Route::delete('menadzer/{menadzer}', [MenadzerController::class, 'destroy']);
 
+Route::group(['middleware' => ['auth:sanctum']], function () {
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::put('restoran/{restoran}', [RestoranController::class, 'update']);
+    Route::delete('restoran/{restoran}', [RestoranController::class, 'destroy']);
+    Route::delete('menadzer/{menadzer}', [MenadzerController::class, 'destroy']);
+    Route::post('logout', [AuthController::class, 'logout']);
 });
